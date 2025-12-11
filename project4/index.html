@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Currency Explorer</title>
+
+  <link rel="stylesheet" href="123.css" />
+
+  <!-- Chart.js for history graph -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- JS -->
+  <script defer src="index.js"></script>
+</head>
+
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Currency Explorer</h1>
+      <p>Click two countries on the map to compare their currencies and see the exchange rate.</p>
+    </header>
+
+    <main class="app-main">
+      
+      <!-- map -->
+      <section class="map-section" aria-label="World map currency selector">
+        <div class="map-wrapper">
+  <img
+    src="image/MapChart_Map.png"
+    alt="Simplified world map. Click pins to select countries."
+    class="map-image"
+  />
+
+  <button class="country-pin pin-us" data-country="United States" data-currency="USD">US</button>
+  <button class="country-pin pin-mx" data-country="Mexico" data-currency="MXN">MX</button>
+  <button class="country-pin pin-ca" data-country="Canada" data-currency="CAD">CA</button>
+  <button class="country-pin pin-uk" data-country="United Kingdom" data-currency="GBP">UK</button>
+  <button class="country-pin pin-eu" data-country="Eurozone" data-currency="EUR">EU</button>
+  <button class="country-pin pin-br" data-country="Brazil" data-currency="BRL">BR</button>
+  <button class="country-pin pin-jp" data-country="Japan" data-currency="JPY">JP</button>
+  <button class="country-pin pin-au" data-country="Australia" data-currency="AUD">AU</button>
+</div>
+
+
+        <p class="map-help">
+          Step 1: click where you are coming <strong>from</strong>.<br />
+          Step 2: click where you are going <strong>to</strong>.
+        </p>
+      </section>
+
+      <section class="info-section" aria-label="Currency info and conversion">
+
+        <div class="card selection-card">
+          <h2>Selected Route</h2>
+
+          <div class="selection-row">
+            <div class="selection-block">
+              <h3>From</h3>
+              <p id="fromCountryText" class="selection-label">—</p>
+              <p id="fromCurrencyText" class="selection-currency">—</p>
+            </div>
+
+            <button id="swapBtn" class="swap-btn" aria-label="Swap from and to countries">⇄</button>
+
+            <div class="selection-block">
+              <h3>To</h3>
+              <p id="toCountryText" class="selection-label">—</p>
+              <p id="toCurrencyText" class="selection-currency">—</p>
+            </div>
+          </div>
+
+          <div class="amount-row">
+            <label for="amountInput">Amount in <span id="amountCurrencyLabel">—</span></label>
+            <input id="amountInput" type="number" min="0" step="0.01" value="100" />
+          </div>
+
+          <button id="convertBtn" class="primary-btn">Convert</button>
+
+          <p id="conversionResult" class="conversion-result" aria-live="polite"></p>
+          <p id="conversionRate" class="conversion-rate" aria-live="polite"></p>
+          <p id="statusMessage" class="status-message" aria-live="polite"></p>
+        </div>
+
+        <div class="card graph-card">
+          <h2>Exchange Rate History</h2>
+          <p class="small-note">History of the last 30 days:</p>
+          <canvas id="historyChart" aria-label="Exchange rate history graph"></canvas>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p> Lester Vega Currency Explorer </p>
+    </footer>
+  </div>
+</body>
+</html>

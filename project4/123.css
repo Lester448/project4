@@ -1,0 +1,285 @@
+/* ---- Global ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #101733, #050814);
+  color: #f5f5f5;
+}
+
+/* ---- layout ---- */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  margin: 0 0 0.25rem;
+  letter-spacing: 0.03em;
+}
+
+.app-main {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .app-main {
+    grid-template-columns: 1fr 1fr; 
+    align-items: flex-start;
+    justify-content: center;        
+    gap: 2rem;                     
+  }
+}
+
+.app-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ---- Map  ---- */
+.map-section {
+  background: rgba(11, 16, 40, 0.9);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+.map-wrapper {
+  position: relative;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #050814;
+}
+
+.map-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0.8) contrast(1.05);
+}
+
+/* Simple fallback */
+.map-wrapper:not(:has(img[src])) {
+  min-height: 260px;
+}
+
+/* ---- Country pins ---- */
+.country-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 0.2rem 0.4rem;
+  font-size: 0.65rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(75, 123, 255, 0.95);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(5, 8, 20, 0.9), 0 6px 14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+  z-index: 2;
+}
+
+.country-pin:hover {
+  transform: translate(-50%, -55%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+.country-pin.selected-from {
+  background: #22c55e;
+}
+
+.country-pin.selected-to {
+  background: #f97316;
+}
+
+/* Per-country positions */
+.pin-ca {
+  top: 30%;
+  left: 22%;
+}
+
+.pin-us {
+  top: 42%;
+  left: 27%;
+}
+
+.pin-mx {
+  top: 52%;
+  left: 20%;
+}
+
+.pin-br {
+  top: 68%;
+  left: 35%;
+}
+
+.pin-uk {
+  top: 33%;
+  left: 52%;
+}
+
+.pin-eu {
+  top: 38%;
+  left: 56%;
+}
+
+.pin-jp {
+  top: 41%;
+  left: 90%;
+}
+
+.pin-au {
+  top: 73%;
+  left: 82%;
+}
+
+.map-help {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ---- cards ---- */
+.info-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: rgba(11, 16, 40, 0.95);
+  border-radius: 0.9rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+.selection-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.selection-block h3 {
+  margin: 0 0 0.1rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.selection-label {
+  margin: 0;
+  font-weight: 600;
+}
+
+.selection-currency {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.swap-btn {
+  border-radius: 999px;
+  border: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: #1e293b;
+  color: #e5e7eb;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.amount-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.amount-row label {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+#amountInput {
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.6rem;
+  border: 1px solid #27324d;
+  background: #020617;
+  color: #f9fafb;
+  font-size: 0.95rem;
+}
+
+/* ---- Buttons ---- */
+.primary-btn,
+.secondary-btn {
+  margin-top: 0.75rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #4b7bff;
+  color: #ffffff;
+}
+
+.secondary-btn {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+/* ---- Results ---- */
+.conversion-result {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.conversion-rate {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.status-message {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+
+/* ---- Graph card ---- */
+.graph-card .small-note {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+#historyChart {
+  width: 100%;
+  max-height: 220px;
+}
