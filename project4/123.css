@@ -8,8 +8,8 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #101733, #050814);
-  color: #f5f5f5;
+  background: radial-gradient(circle at top, #ffffff, #e9ecef);
+  color: #1f2937; /* dark grey text */
 }
 
 /* ---- layout ---- */
@@ -27,8 +27,10 @@ body {
 .app-header h1 {
   margin: 0 0 0.25rem;
   letter-spacing: 0.03em;
+  color: #111; /* strong dark */
 }
 
+/* MAIN GRID */
 .app-main {
   display: grid;
   gap: 1.5rem;
@@ -38,10 +40,10 @@ body {
 
 @media (min-width: 900px) {
   .app-main {
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     align-items: flex-start;
-    justify-content: center;        
-    gap: 2rem;                     
+    justify-content: center;
+    gap: 2rem;
   }
 }
 
@@ -49,124 +51,68 @@ body {
   margin-top: 1.5rem;
   text-align: center;
   font-size: 0.8rem;
-  opacity: 0.7;
+  opacity: 0.6;
+  color: #444;
 }
 
-/* ---- Map  ---- */
+/* ---- Map Section ---- */
 .map-section {
-  background: rgba(11, 16, 40, 0.9);
+  background: #ffffff;
   border-radius: 0.9rem;
   padding: 1rem;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .map-wrapper {
   position: relative;
   border-radius: 0.8rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: #050814;
+  border: 1px solid #d1d5db; /* soft grey border */
+  background: #f4f5f7;
 }
 
 .map-image {
   display: block;
   width: 100%;
   height: auto;
-  filter: saturate(0.8) contrast(1.05);
-}
-
-/* Simple fallback */
-.map-wrapper:not(:has(img[src])) {
-  min-height: 260px;
+  filter: saturate(1) contrast(1);
 }
 
 /* ---- Country pins ---- */
 .country-pin {
   position: absolute;
   transform: translate(-50%, -50%);
-  padding: 0.2rem 0.4rem;
+  padding: 0.25rem 0.45rem;
   font-size: 0.65rem;
   border-radius: 999px;
   border: none;
-  background: rgba(75, 123, 255, 0.95);
-  color: #fff;
+  background: #4b7bff;
+  color: white;
   cursor: pointer;
-  box-shadow: 0 0 0 1px rgba(5, 8, 20, 0.9), 0 6px 14px rgba(0, 0, 0, 0.6);
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
-  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .country-pin:hover {
   transform: translate(-50%, -55%);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
-.country-pin.selected-from {
-  background: #22c55e;
-}
+.country-pin.selected-from { background: #22c55e; }
+.country-pin.selected-to { background: #f97316; }
 
-.country-pin.selected-to {
-  background: #f97316;
-}
-
-/* Per-country positions */
-.pin-ca {
-  top: 30%;
-  left: 22%;
-}
-
-.pin-us {
-  top: 42%;
-  left: 27%;
-}
-
-.pin-mx {
-  top: 52%;
-  left: 20%;
-}
-
-.pin-br {
-  top: 68%;
-  left: 35%;
-}
-
-.pin-uk {
-  top: 33%;
-  left: 52%;
-}
-
-.pin-eu {
-  top: 38%;
-  left: 56%;
-}
-
-.pin-jp {
-  top: 41%;
-  left: 90%;
-}
-
-.pin-au {
-  top: 73%;
-  left: 82%;
-}
-
-.map-help {
-  margin-top: 0.75rem;
-  font-size: 0.85rem;
-  opacity: 0.85;
-}
-
-/* ---- cards ---- */
+/* ---- Cards ---- */
 .info-section {
   display: grid;
   gap: 1rem;
 }
 
 .card {
-  background: rgba(11, 16, 40, 0.95);
+  background: #ffffff;
   border-radius: 0.9rem;
   padding: 1rem 1.25rem;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
 }
 
 .selection-row {
@@ -181,20 +127,22 @@ body {
 .selection-block h3 {
   margin: 0 0 0.1rem;
   font-size: 0.85rem;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .selection-label {
   margin: 0;
   font-weight: 600;
+  color: #111;
 }
 
 .selection-currency {
   margin: 0;
   font-size: 0.9rem;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
+/* SWAP BUTTON */
 .swap-btn {
   border-radius: 999px;
   border: none;
@@ -205,33 +153,28 @@ body {
   justify-content: center;
   font-size: 1.2rem;
   cursor: pointer;
-  background: #1e293b;
-  color: #e5e7eb;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  background: #f3f4f6;
+  color: #374151;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.amount-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-top: 0.5rem;
-}
-
+/* INPUT */
 .amount-row label {
   font-size: 0.85rem;
-  opacity: 0.85;
+  opacity: 0.75;
+  color: #333;
 }
 
 #amountInput {
   padding: 0.5rem 0.7rem;
   border-radius: 0.6rem;
-  border: 1px solid #27324d;
-  background: #020617;
-  color: #f9fafb;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  color: #111;
   font-size: 0.95rem;
 }
 
-/* ---- Buttons ---- */
+/* BUTTONS */
 .primary-btn,
 .secondary-btn {
   margin-top: 0.75rem;
@@ -244,15 +187,15 @@ body {
 
 .primary-btn {
   background: #4b7bff;
-  color: #ffffff;
+  color: white;
 }
 
 .secondary-btn {
-  background: #111827;
-  color: #e5e7eb;
+  background: #e5e7eb;
+  color: #111;
 }
 
-/* ---- Results ---- */
+/* RESULTS */
 .conversion-result {
   margin-top: 0.75rem;
   font-size: 1.05rem;
@@ -262,20 +205,19 @@ body {
 .conversion-rate {
   margin-top: 0.25rem;
   font-size: 0.9rem;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .status-message {
   margin-top: 0.4rem;
   font-size: 0.8rem;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
-
-/* ---- Graph card ---- */
+/* GRAPH */
 .graph-card .small-note {
   font-size: 0.8rem;
-  opacity: 0.8;
+  opacity: 0.7;
   margin-bottom: 0.5rem;
 }
 
